@@ -1,0 +1,32 @@
+version: '3.8'
+services:
+  db:
+    image: ankane/pgvector:latest
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: ragdb
+    ports:
+      - '5432:5432'
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  app:
+    build: .
+    depends_on:
+      - db
+    environment:
+      PORT: 4000
+      DATABASE_URL: postgresql://postgres:password@db:5432/ragdb
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      JWT_SECRET: ${JWT_SECRET}
+      OPENAI_MODEL: ${OPENAI_MODEL}
+      OPENAI_EMBEDDING_MODEL: ${OPENAI_EMBEDDING_MODEL}
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/usr/src/app
+
+volumes:
+  db-data:
