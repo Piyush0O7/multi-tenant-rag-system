@@ -1,6 +1,12 @@
-# multi-tenant-rag-system
+# Multi-Tenant RAG System
 
-A secure and scalable Multi-Tenant RAG system built with Node.js, TypeScript, PostgreSQL, and pgvector that allows organizations to upload documents and query their own AI-powered knowledge base with strict tenant isolation and intelligent guardrails.
+## Overview
+
+This project is a secure and scalable Retrieval-Augmented Generation (RAG) platform built for multi-tenant environments where organizations can upload, manage, and query their own knowledge base using AI-powered search and retrieval.
+
+The system focuses heavily on tenant isolation, secure document handling, vector-based semantic search, and intelligent guardrails to prevent prompt injection, cross-tenant leakage, and unreliable responses.
+
+Built with Node.js, TypeScript, PostgreSQL, and pgvector, the project demonstrates modern backend architecture and real-world AI application design.
 
 ## Features
 
